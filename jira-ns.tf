@@ -8,6 +8,6 @@ resource "kubernetes_namespace" "jira-ns" {
       mylabel = "jira-value"
     }
 
-    name = "terraform-jira-ns"
+    name = "jira-ns"
   }
 }

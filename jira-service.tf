@@ -12,11 +12,7 @@ resource "kubernetes_service" "jira-svs" {
 
     port {
       port        = 8080
-<<<<<<< HEAD
-      target_port = 80
-=======
       target_port = 8080
->>>>>>> b806da832bf0c0839b5d0507df38b38c5050873f
     }
 
     type = "LoadBalancer"
