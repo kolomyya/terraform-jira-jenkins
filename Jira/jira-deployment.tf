@@ -22,13 +22,13 @@ resource "kubernetes_deployment" "jira-deployment" {
       }
       spec {
         volume { 
-          name = "jira-home"
+          name = "jira-pv"
           }
         container {
           image = "gcr.io/hightowerlabs/jira:7.3.6-standalone"
           name  = "jira"
           volume_mount {
-            name       = "jira-home"
+            name       = "jira-pv"
             mount_path = "/opt/jira-home"
         }
        }
