@@ -1,4 +1,4 @@
-resource "kubernetes_service" "grafana-svs" {
+resource "kubernetes_service" "grafana-service" {
   metadata {
     name = "grafana-core"
     namespace = "tools"
@@ -6,10 +6,9 @@ resource "kubernetes_service" "grafana-svs" {
 
   spec {
     selector {
-      app = "${kubernetes_pod.grafana.metadata.0.labels.app}"
+      app = "fscoding"
     }
 
-    session_affinity = "ClientIP"
 
     port {
       port        = 80
@@ -20,20 +19,3 @@ resource "kubernetes_service" "grafana-svs" {
   }
 }
 
-resource "kubernetes_pod" "grafana" {
-  metadata {
-    name = "grafana-core"
-    namespace =  "tools"
-
-    labels {
-      app = "grafana"
-    }
-  }
-
-  spec {
-    container {
-      image = "grafana/grafana:4.2.0"
-      name  = "grafana"
-    }
-  }
-}
