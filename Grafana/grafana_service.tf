@@ -1,12 +1,11 @@
 resource "kubernetes_service" "grafana-service" {
   metadata {
-    name = "grafana-core"
-    namespace = "tools"
+    name = "grafana"
   }
 
   spec {
     selector {
-      app = "fscoding"
+      app = "${kubernetes_pod.grafana-pod.metadata.0.labels.app}"
     }
 
 
@@ -19,3 +18,19 @@ resource "kubernetes_service" "grafana-service" {
   }
 }
 
+resource "kubernetes_pod" "grafana-pod" {
+  metadata {
+    name = "grafana"
+
+    labels {
+      app = "grafana"
+    }
+  }
+
+  spec {
+    container {
+      image = "grafana/grafana:6.0.0"
+      name  = "grafana"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 resource "kubernetes_deployment" "grafana" {
   metadata {
-    name = "grafana-core"
+    name = "grafana"
     namespace = "tools"
     labels {
       test = "grafana"
@@ -24,15 +24,14 @@ resource "kubernetes_deployment" "grafana" {
     
       spec {
         volume {
-          name = "grafana-volume"
+          name = "grafana-pv"
            }
         container {
-          image = "grafana/grafana:4.2.0"
+          image = "grafana/grafana:6.0.0"
           name  = "grafana"
-          image_pull_policy = "IfNotPresent"
 
           volume_mount {
-            name  =  "grafana_volume"
+            name  =  "grafana-pv"
             mount_path  =  "/var/lib/grafana" 
            } 
     
@@ -44,13 +43,7 @@ resource "kubernetes_deployment" "grafana" {
             requests{
               cpu    = "250m"
               memory = "50Mi"
-              }
              }
-          readiness_probe {
-            http_get {
-              path = "/login"
-              port = 80  
-            }
           }
         }
       }

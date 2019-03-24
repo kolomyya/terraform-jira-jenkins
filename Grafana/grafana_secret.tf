@@ -4,8 +4,8 @@ resource "kubernetes_secret" "grafana_secret" {
   }
 
   data {
-    username = "admin-username"
-    password = "admin-password"
+    username = ""
+    password = ""
   }
 
   type = "Opaque"
