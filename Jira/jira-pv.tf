@@ -1,6 +1,7 @@
 resource "kubernetes_persistent_volume" "jira" {
     metadata {
         name = "jira-pv"
+        namespace = "tools"
     }
     spec {
         capacity {

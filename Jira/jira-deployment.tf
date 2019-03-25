@@ -1,7 +1,7 @@
 resource "kubernetes_deployment" "jira-deployment" {
   metadata {
     name      = "terraform-jira"
-    namespace = "jira-ns"
+    namespace = "tools"
 
     labels {
       test  = "jira"

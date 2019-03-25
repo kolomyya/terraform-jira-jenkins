@@ -8,6 +8,6 @@ resource "kubernetes_namespace" "jira-ns" {
       mylabel = "jira-value"
     }
 
-    name = "jira-ns"
+    name = "tools"
   }
 }

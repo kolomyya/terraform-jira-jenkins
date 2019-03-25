@@ -1,6 +1,7 @@
 resource "kubernetes_service" "jira-service" {
   metadata {
     name = "jira"
+    namespace = "tools"
   }
 
   spec {
