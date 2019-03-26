@@ -21,33 +21,22 @@ resource "kubernetes_deployment" "grafana" {
           test = "grafana"
         }
       }
-    
+
       spec {
         volume {
-          name = "grafana-pv"
-           }
+          name = "docker-sock"
+          host_path = { path = "/var/run" }
+          }
         container {
           image = "grafana/grafana:6.0.0"
           name  = "grafana"
 
           volume_mount {
-            name  =  "grafana-pv"
-            mount_path  =  "/var/lib/grafana" 
-           } 
-    
-          resources{
-            limits{
-              cpu    = "0.5"
-              memory = "512Mi"
-            }
-            requests{
-              cpu    = "250m"
-              memory = "50Mi"
-             }
+            name  =  "docker-sock"
+            mount_path  =  "/var/run" 
           }
         }
       }
     }
   }
 }
-
