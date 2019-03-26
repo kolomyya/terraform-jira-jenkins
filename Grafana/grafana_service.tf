@@ -1,11 +1,12 @@
 resource "kubernetes_service" "grafana-service" {
   metadata {
     name = "grafana"
+    namespace = "tools"
   }
 
   spec {
     selector {
-      app = "${kubernetes_pod.grafana-pod.metadata.0.labels.app}"
+      app = "grafana-pod"
     }
 
 
@@ -16,21 +17,3 @@ resource "kubernetes_service" "grafana-service" {
 
     type = "LoadBalancer"
   }
-}
-
-resource "kubernetes_pod" "grafana-pod" {
-  metadata {
-    name = "grafana"
-
-    labels {
-      app = "grafana"
-    }
-  }
-
-  spec {
-    container {
-      image = "grafana/grafana:6.0.0"
-      name  = "grafana"
-    }
-  }
-}
