@@ -1,6 +1,7 @@
 resource "kubernetes_service" "grafana-service" {
   metadata {
     name = "grafana"
+    namespace = "tools"
   }
 
   spec {
