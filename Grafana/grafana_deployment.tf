@@ -12,13 +12,13 @@ resource "kubernetes_deployment" "grafana" {
 
     selector {
       match_labels {
-        test = "grafana"
+        app = "grafana-pod"
       }
     }
     template {
       metadata {
         labels {
-          test = "grafana"
+          app = "grafana-pod"
         }
       }
 
@@ -33,7 +33,7 @@ resource "kubernetes_deployment" "grafana" {
 
           volume_mount {
             name  =  "docker-sock"
-            mount_path  =  "/var/run" 
+            mount_path  =  "/var/run"
           }
         }
       }
