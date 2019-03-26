@@ -17,3 +17,4 @@ resource "kubernetes_service" "grafana-service" {
 
     type = "LoadBalancer"
   }
+}
