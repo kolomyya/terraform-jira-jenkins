@@ -4,24 +4,24 @@ resource "kubernetes_deployment" "jira-deployment" {
     namespace = "tools"
 
     labels {
-      test  = "jira"
+      app = "jira-pod"
 }
   }
   spec {
     replicas = 1
     selector {
       match_labels {
-        test  = "jira"
+        app = "jira-pod"
 }
 }
     template {
       metadata {
         labels {
-          test = "jira"
+          app = "jira-pod"
 }
       }
       spec {
-        volume { 
+        volume {
           name = "jira-pv"
           }
         container {
