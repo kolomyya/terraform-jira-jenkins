@@ -1,4 +1,4 @@
-# Deploy the Jenkins AMI with Terraform
+# Deploy the Jenkins with Terraform
 
 This repo  deploy a Jenkins on Kubernetes cluster  using Terraform. Jenkins is a distributed automation server, generally associated with Continuous Integration (CI) and Continuous Delivery (CD). A Jenkins cluster typically involves one or more master instance(s) coupled with one or more slave instance(s)
 
